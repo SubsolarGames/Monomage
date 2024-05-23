@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://rw8ijdf1of2c"]
+
+[ext_resource type="PackedScene" uid="uid://blii2jcvuxmo5" path="res://missile.tscn" id="1_7jctm"]
+[ext_resource type="Script" path="res://wall_missile.gd" id="2_cxo78"]
+
+[node name="wall_missile" instance=ExtResource("1_7jctm")]
+script = ExtResource("2_cxo78")

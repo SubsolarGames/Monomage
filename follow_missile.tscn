@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://wwknnfej4agq"]
+
+[ext_resource type="PackedScene" uid="uid://blii2jcvuxmo5" path="res://missile.tscn" id="1_ed2rc"]
+[ext_resource type="Script" path="res://follow_missile.gd" id="2_1eruu"]
+
+[node name="follow_missile" instance=ExtResource("1_ed2rc")]
+script = ExtResource("2_1eruu")

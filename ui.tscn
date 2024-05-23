@@ -1,0 +1,113 @@
+[gd_scene load_steps=11 format=3 uid="uid://dqrefppx5luev"]
+
+[ext_resource type="Script" path="res://ui.gd" id="1_kjban"]
+[ext_resource type="Script" path="res://healthbar.gd" id="1_p2fxd"]
+[ext_resource type="FontFile" uid="uid://h1jsxogdqmdu" path="res://CascadiaMono-SemiBold.ttf" id="1_qxkt1"]
+[ext_resource type="Script" path="res://rot.gd" id="2_s150g"]
+[ext_resource type="Script" path="res://gems.gd" id="3_3ogut"]
+[ext_resource type="PackedScene" uid="uid://b0xxru2bqd1v3" path="res://spell_icon.tscn" id="5_gt0ft"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40tod"]
+bg_color = Color(1, 1, 1, 0.662745)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjrqx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 5
+anti_aliasing = false
+
+[sub_resource type="LabelSettings" id="LabelSettings_o71he"]
+font = ExtResource("1_qxkt1")
+
+[sub_resource type="Gradient" id="Gradient_fp2xw"]
+offsets = PackedFloat32Array(0.473333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_kjban")
+spell_icon = ExtResource("5_gt0ft")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 85.0
+offset_top = 62.0
+offset_right = 367.0
+offset_bottom = 71.0
+theme_override_constants/outline_size = 100
+theme_override_styles/background = SubResource("StyleBoxFlat_40tod")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wjrqx")
+show_percentage = false
+script = ExtResource("1_p2fxd")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 17.0
+offset_top = 56.0
+offset_right = 131.0
+offset_bottom = 94.0
+text = "Health"
+label_settings = SubResource("LabelSettings_o71he")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(10, 91)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(13, 2.08165e-12)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Gems"
+label_settings = SubResource("LabelSettings_o71he")
+
+[node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "1000 x"
+label_settings = SubResource("LabelSettings_o71he")
+script = ExtResource("3_3ogut")
+
+[node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 2.08165e-12)
+layout_mode = 2
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/HBoxContainer/Control"]
+position = Vector2(11, 1)
+amount = 20
+emission_shape = 1
+emission_sphere_radius = 7.0
+gravity = Vector2(2.08165e-12, -30)
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_fp2xw")
+
+[node name="Polygon2D" type="Polygon2D" parent="VBoxContainer/HBoxContainer/Control"]
+position = Vector2(9, 6)
+rotation = -2.15374
+scale = Vector2(1.5, 1.5)
+color = Color(1, 0.992157, 0.996078, 1)
+offset = Vector2(-71, -97)
+polygon = PackedVector2Array(66, 92, 66, 102, 76, 102, 76, 92)
+script = ExtResource("2_s150g")
+
+[node name="Control3" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 2.08165e-12)
+layout_mode = 2
+
+[node name="Spells" type="HBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 2

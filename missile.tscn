@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://blii2jcvuxmo5"]
+
+[ext_resource type="Script" path="res://missile.gd" id="1_3etw3"]
+[ext_resource type="Texture2D" uid="uid://bhlopmp7i60wd" path="res://art/missile2.png" id="1_otvdf"]
+
+[sub_resource type="Gradient" id="Gradient_ptcp3"]
+offsets = PackedFloat32Array(0.473333, 1)
+colors = PackedColorArray(1, 1, 0.921569, 1, 1, 1, 0.921569, 0)
+
+[node name="missile" type="Node2D"]
+script = ExtResource("1_3etw3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, 6.97574e-16)
+texture = ExtResource("1_otvdf")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-2.09272e-15, 0)
+rotation = 6.28319
+amount = 50
+emission_shape = 1
+emission_sphere_radius = 3.0
+gravity = Vector2(-30, 2.08165e-12)
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_ptcp3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(5, 1, 4, 3, -9, 2, -9, -1, 2, -2, 5, -1)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
